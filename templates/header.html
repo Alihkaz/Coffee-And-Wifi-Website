@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Cafes worth visiting and working in!</title>
+    
+    {% block styles %}
+    <!-- Load Bootstrap-Flask CSS here -->
+    {{ bootstrap.load_css() }}
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='assets/favicon.ico') }}"
+    />
+    <!-- Font Awesome icons (free version)-->
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link
+      href="{{ url_for('static', filename='css/styles.css') }}"
+      rel="stylesheet"
+    />
+    {% endblock %}
+  </head>
+
+
+
+
+  <header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{{ url_for('home') }}" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="{{ url_for('show_cafes_list') }}" class="nav-link px-2 text-white">Cafes</a></li>
+          <li class="nav-item">
+          </li>
+        </ul>
+  
+       
+        
+        <div class="text-end">
+          {% if not current_user.is_authenticated: %}
+          <a href="{{ url_for('login') }}" class="btn btn-outline-light me-2" tabindex="-1" role="button" >Login</a>
+          <a href="{{ url_for('register') }}" class="btn btn-warning" tabindex="-1" role="button" >Join Us!</a>
+          {% else: %}
+          <a href="{{ url_for('logout') }}" class="btn btn-danger " tabindex="-1" role="button">Log Out</a>
+          {% endif %}
+          {% if ability_to_view==True%}
+          <a href="{{url_for('add_new_coffee')}}" class="btn btn-outline-light me-2" tabindex="-1" role="button" >Add Your Taste!</a>
+          {% endif %}
+
+         
+
+        </div>
+  
+      </div>
+    </div>
+  </header>
+
+  
+</html>
+
+
+
+
+
+
+
+
+
+
+
